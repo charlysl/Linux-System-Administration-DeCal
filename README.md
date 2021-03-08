@@ -1,0 +1,2 @@
+# Linux-System-Administration-DeCal
+Fall 2020  This course will cover the basics of setting up and administering a production-quality Linux server environment. By the end of this course, we expect you to:  be comfortable using GNU/Linux understand how different parts of the OS work together, e.g. init, processes, daemons, filesystems, etc. understand basic networking on Linux have a good sense about maintaining system security understand system administration essentials get a practical taste of what sysadmins do in industry.
