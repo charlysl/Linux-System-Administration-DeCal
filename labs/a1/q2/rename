@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [[ $# -ne 3 ]]; then
+	echo "Need 3 arguments" && exit 1
+fi
+
+DIR="$1"
+
+if [[ ! -d ${DIR} ]]; then
+	echo "arg 1: ${DIR} is not a directory" && exit 1
+fi
+
+EXT1="$2"
+EXT2="$3"
+
+
+function newpath() {
+	echo ${1%.*}."$EXT2"
+}
+
+find "$DIR" -type f | grep "\.${EXT1}$" | while read file; do
+	echo renaming "$file" to $(newpath $file)
+	mv "$file" $(newpath $file)
+done
