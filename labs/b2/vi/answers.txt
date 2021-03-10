@@ -8,10 +8,15 @@ ctrl+z
 
 3. How would you edit a new file alongside another file?
 
+TODO
 
 4. How would you indent a block of text?
 
+TODO
 
 5. Tell us about one other cool vim feature you found out about that isn’t mentioned in this lab!
 
+In v mode, you can select text and save the selection to a file by typing : and then doing w <FILENAME>
+
+You can also insert anywhere the output of a shell command by doing :r !<COMMAND>
 
