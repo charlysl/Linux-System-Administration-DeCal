@@ -1,0 +1,14 @@
+1. If you haven’t already, detach from your current tmux session using Ctrl+b d. Now, what command would you type to attach back to it?
+
+tmux attach -t 0
+
+2. What command will delete your session?
+
+tmux kill-session -t 0
+
+3. What command will create a new session?
+
+tmux
+
+tmux new -s <session name>
+
