@@ -1,0 +1,17 @@
+1. How would you delete the previous 10 lines?
+
+d10k
+
+2. How would you jump back to the shell without exiting vim?
+
+ctrl+z
+
+3. How would you edit a new file alongside another file?
+
+
+4. How would you indent a block of text?
+
+
+5. Tell us about one other cool vim feature you found out about that isn’t mentioned in this lab!
+
+

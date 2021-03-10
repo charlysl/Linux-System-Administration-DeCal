@@ -1,0 +1,4 @@
+#!/bin/bash
+# print out the first 10 words that do not contain any of the letters A, E, I, O, U, or Y.
+
+grep -E '^[^AEIOUY]+$' words.txt | head
