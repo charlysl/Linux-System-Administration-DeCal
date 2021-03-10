@@ -1,0 +1,22 @@
+Compiling and packaging
+
+1. Will we still be able to run “hellopenguin” from any directory if we packaged it into “/usr/share” instead of “/usr/bin”?
+
+Not unless /usr/share is in PATH
+
+2. What is your rationale for the previous answer?
+
+Typically executables are in bin directories, which are typically in the PATH environment variable.
+Installing binaries in random directories would be tedious, requiring us to maintain an ever growing PATH.
+
+Debugging
+
+1. What package was missing after trying to install ocfspy?
+
+ocfdocs
+
+2. What is the password that ocfspy outputs after fixing the dependency problem?
+
+
+The password is Sinkhole.
+
