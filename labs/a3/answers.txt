@@ -1,0 +1,2 @@
+Installation media signed by:
+Pierre Schmitz <pierre@archlinux.de>   Primary key fingerprint: 4AA4 767B BC9C 4B1D 18AE  28B7 7F2D 434B 9741 E8AC
