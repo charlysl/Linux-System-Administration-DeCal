@@ -1,7 +1,19 @@
 Installation media signed by:
 Pierre Schmitz <pierre@archlinux.de>   Primary key fingerprint: 4AA4 767B BC9C 4B1D 18AE  28B7 7F2D 434B 9741 E8AC
 
+Installing arch in my desktop using VMWare and Ubuntu 18.04 desktop failed early (no network called default)
+Installing in Digital Ocean in a Ubuntu 18.04 server droplet failed as well (boots into the UEFI Shell, no way out)
+But installing it my laptop using VMWare and Ubunti 18.04 server, updated and upgraded, did get as far as login!
+
 Hostname: archiso
 ip address: 192.168.122.104
 Can't ping it from a host terminal
 
+The purpose of having:
+(1) the EFI system partition 
+
+It is recommended that for compability this boot partition fs should be FAT32 (to support dual booting with Windows); however, the recommended fs for modern Linux is ext4, so the boot fs and the root fs should be installed on different partitions.
+
+(2) the swap partition
+
+Swap permanent storage doesn't use a filesystem at all; one option is to store assign it its own partition; another is to just use a regular file in a regular partition, like the root partition.
