@@ -9,7 +9,9 @@ Hostname: archiso
 ip address: 192.168.122.104
 Can't ping it from a host terminal
 
+
 The purpose of having:
+
 (1) the EFI system partition 
 
 It is recommended that for compability this boot partition fs should be FAT32 (to support dual booting with Windows); however, the recommended fs for modern Linux is ext4, so the boot fs and the root fs should be installed on different partitions.
@@ -17,3 +19,10 @@ It is recommended that for compability this boot partition fs should be FAT32 (t
 (2) the swap partition
 
 Swap permanent storage doesn't use a filesystem at all; one option is to store assign it its own partition; another is to just use a regular file in a regular partition, like the root partition.
+
+
+What would be the name of the device file corresponding to the fourth partition on the second discovered storage device?
+
+sdb4
+
+
