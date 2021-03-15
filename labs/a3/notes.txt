@@ -1,0 +1,22 @@
+networking:
+To be able to have internet connection at all after installation, you need to install dhcpcd,
+and after reboot do    dhcpcd <interface name, like ens2>
+
+If you don't do this you will be stuck after reboot, unable to access the internet, and hence to install packages (including dhcpcd!).
+
+First time I came accross this problem I tried to get the archvm to read the dhcpcd package from an iso through a "cdrom", but this would have required a reboot to work (see below), so I just added the dhcpcd package to the installation the second time around.
+
+
+packages:
+I also included dhcpcd and ip
+See: https://www.reddit.com/r/archlinux/comments/96zmza/what_are_some_of_the_must_have_basic_arch_packages/
+
+Snapshots:
+I wanted to create a snapshot right before arch-chroot, because if I have to reinstall, this could save me a lot of time, like 1 hour.
+See: https://www.reddit.com/r/kvm/comments/9s6jt4/unable_to_create_snapshots/
+
+To edit a vm's config file, run   virsh edit <vm name>
+
+However, it seems like this is something I have to do before running the vm, won't read the config change on the fly.
+
+
