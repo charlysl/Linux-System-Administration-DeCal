@@ -49,4 +49,34 @@ Neither should be writable by others, to prevent corruption.
 
 ## Setting up a firewall
 
+#### 1. What command did you use to enable a port?
+```
+$ sudo ufw default deny
+Default incoming policy changed to 'deny'
 
+$ sudo ufw allow ssh
+Rules updated
+Rules updated (v6)
+```
+
+#### 2. Paste the output of sudo ufw status verbose. Make sure you can clearly see the changes you made in the steps above!
+```
+$ sudo ufw status verbose
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere                  
+22/tcp (v6)                ALLOW IN    Anywhere (v6)
+```
+
+#### 3. Why is setting up a firewall important? What are some security concerns that might arise from exposing a port?
+
+For security reasons, to reduce the attack surface as much as possible, only those services that need to be accesed by external systems should be exposed by the firewall.
+
+This is why the default policy is to deny all connections.
+
+One of the concerns is that any service endpoint that is allowed by the firewall can be exploited if it turns out that it has a vulnerability, which can eventually lead to the whole network being compromised. But it could also leak information about the system that can be used to narrow down what attacks to try on services that are correctly rightly allowed by the firewall, facilitating the attack.
