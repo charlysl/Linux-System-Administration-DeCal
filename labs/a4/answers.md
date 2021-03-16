@@ -1,5 +1,3 @@
-# [Lab 4 - Linux Post-Install](https://decal.ocf.berkeley.edu/archives/2020-fall/labs/a4)
-
 ## Generating and using SSH keys
 
 ### Ubuntu server 18.04 server, Laptop client
@@ -29,7 +27,7 @@ In my case, I generated the keys inside the Ubuntu server host, and copied the a
 
 ```
 $ cat ~/.ssh/authorized_keys 
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/Dc4hE/soHfuv75Wg2Sle/4qn+O9SoXJDBX7jQMNgi charly@pandemia
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/Dc4hE/soHfuv75Wg2Sle/4qn+O9SoXJDBX7jQMNgi me@myhost
 ```
 
 #### 2. What are the permissions on your public key and private key? Why do you think they are the way they are?
@@ -37,8 +35,8 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/Dc4hE/soHfuv75Wg2Sle/4qn+O9SoXJDBX7jQMNgi
 ```
 $ ls -l ~/.ssh
 total 16
--rw------- 1 charly charly 411 Mar 15 14:35 id_ed25519
--rw-r--r-- 1 charly charly  97 Mar 15 14:35 id_ed25519.pub
+-rw------- 1 me me 411 Mar 15 14:35 id_ed25519
+-rw-r--r-- 1 me me  97 Mar 15 14:35 id_ed25519.pub
 ```
 
 The private key must be accessible only by me, otherwise someone could just copy it and impersonete me to log into the server.
@@ -79,4 +77,59 @@ For security reasons, to reduce the attack surface as much as possible, only tho
 
 This is why the default policy is to deny all connections.
 
-One of the concerns is that any service endpoint that is allowed by the firewall can be exploited if it turns out that it has a vulnerability, which can eventually lead to the whole network being compromised. But it could also leak information about the system that can be used to narrow down what attacks to try on services that are correctly rightly allowed by the firewall, facilitating the attack.
+One of the concerns is that any service endpoint that is allowed by the firewall can be exploited if it turns out that it has a vulnerability, which can eventually lead to the whole network being compromised. But it could also leak information about the system that can be used to narrow down what attacks to try on services that are rightly allowed by the firewall, facilitating the attack.
+
+## Choose your won adventure
+
+#### 1. What did you install on your VM?
+
+Gitea
+
+#### 2. Attach a screenshot of your service in action. (This could be a web console or a command output in the shell.)
+
+![Gitea Screenshow](./gitea.png)
+
+#### 3. Briefly describe the installation process. Were there any unexpected roadblocks you encountered?
+
+First I tried to install CherryMusic, but ran into a 404 error when trying to install its python module. Moved on to a different app.
+
+Gitea installation was very smooth, maybe because it is distributed as just one binary, and the manual configuration instructions went smoothly.
+
+#### 4. 
+
+##### a) What are some security implications from hosting this service? 
+
+Just by hosting any service in the public internet you have already become a target. Your server will probably get listed by services like Shodan, and botnets will try to press it into their service, to be used towards nefarious ends, such as DoS attacks, hosting the unspeakable, proxying, etc.
+
+This is a service that is quite niche, so it is unlikely to have attracted much attention from both researchers (and attackers). For this reason I would be very reluctant to use for anything serios, and go with a more mainstream alternative.
+
+There is a number of [known vulnerabilities](https://www.cvedetails.com/vulnerability-list.php?vendor_id=19185&product_id=49829&version_id=0&page=1&hasexp=0&opdos=0&opec=0&opov=0&opcsrf=0&opgpriv=0&opsqli=0&opxss=0&opdirt=0&opmemc=0&ophttprs=0&opbyp=0&opfileinc=0&opginf=0&cvssscoremin=0&cvssscoremax=0&year=0&month=0&cweid=0&order=1&trc=1&sha=3a73efafeb155c1c85dcbed0e96ba39730cb04cf)
+
+What is worrying is that none of them has been updated since 2019, and it isn't clear to me which are applicable to the current version (1.13).
+
+##### b) How have you handled them (or are you not handling them?)
+
+I have configured and enabled ufw to allow only ssh (port 22) and gitea (port 3000), and rebooted to ensure that the rules are being enforced.
+
+```
+$ sudo ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere                  
+3000/tcp                   ALLOW       Anywhere                  
+22/tcp (v6)                ALLOW       Anywhere (v6)             
+3000/tcp (v6)              ALLOW       Anywhere (v6) 
+```
+
+I am running Gitea as root, which is a concern, and will review this in the coming labs.
+
+I have also confirmed that my Ubuntu version is still maintained (EOL Apr 2023) and patched up-to-date.
+
+```
+apt update
+apt list --upgradable
+apt upgrade
+```
+
