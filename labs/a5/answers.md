@@ -21,4 +21,7 @@ Reload doesn't need to stop the service at all.
 
 ### Creating a service
 
+#### Question 3: What command did you run to crash the service?
+
+kill <PID>
 

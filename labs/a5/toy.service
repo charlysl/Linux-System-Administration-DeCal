@@ -1,0 +1,15 @@
+[Unit]
+Description=A toy service for dcal Advanced Lab 5 - Processes and Services
+Requires=network-online.target
+After=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/home/charly/a5/run
+User=charly
+Restart=always
+RestartSec=10
+
+
