@@ -13,5 +13,12 @@ ssh.service                          loaded active running OpenBSD Secure Shell 
 ...
 ```
 
+### Controlling Services
+
+#### Question 2: What is the difference between systemctl reload yourservice and systemctl restart yourservice?
+
+Reload doesn't need to stop the service at all.
+
+### Creating a service
 
 
