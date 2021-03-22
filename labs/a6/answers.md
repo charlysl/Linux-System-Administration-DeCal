@@ -15,7 +15,7 @@ iface lo inet loopback
 
 #### In your own words, explain what this configuration does. What would happen if you deleted these lines and rebooted?
 
-It creates the loopback ```lo``` interface for IPv4; if deleted then ```127\24``` addresses wouldn't work as expected.
+It creates the loopback ```lo``` interface for IPv4; if deleted then ```127.0.0.0/8``` addresses wouldn't work as expected.
 
 #### Question 1c: Write a few stanzas that configure an interface called ```test``` that is brought up on boot and given the following address: ```192.168.13.37/16```.
 
