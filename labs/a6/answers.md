@@ -25,5 +25,13 @@ iface test inet static
 	address 192.168.13.37/16
 ```
 
+#### Question 2a: Describe the ```tcp_syncookies``` ```sysctl``` option. How can we toggle this value on, and when would we want this on?
+
+See ```man 7 tcp```
+
+It is accessible at ```/proc/sys/net/ipv4/tcp_syncookies```, and is a boolean. It is used to deal with *SYN flooding* DoS attacks (which can cause the SYN backlog to overflow), to issue syncookies. Should be used as a last resort, if at all.
+
+It can be toogled on by ```sysctl net/ipv4/tcp_syncookies=1```
+
 
 
