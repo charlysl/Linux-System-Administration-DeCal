@@ -1,5 +1,7 @@
 # [Lab 10 - Containers and Configuration Management](https://decal.ocf.berkeley.edu/archives/2020-fall/labs/b10)
 
+## Running an interactive container
+
 #### 1. What user are you logged in as by default in the container?
 
 ```root```
