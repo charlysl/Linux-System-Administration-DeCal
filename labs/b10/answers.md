@@ -90,4 +90,18 @@ cron { 'getquote':
 }
 ```
 
+##### Extra: also wrote ```rm-puppet.pp```, to undo the above.
+
+```
+group { 'quotegather':
+  ensure  => absent
+}
+user { 'quotes':
+  ensure  => absent
+}
+
+cron { 'getquote':
+  ensure => absent
+}
+```
 
